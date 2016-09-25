@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.softtek.delta" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Delta ID CARD</name>
+    <description>
+        A NFC application to read and write information to NFC tag developed by Delta Plus
+    </description>
+    <author email="gerardo.garza@softtek.com" href="http://cordova.io">
+        Gerardo Garza
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+	<preference name="SplashScreen" value="screen" />
+	<platform name="android">
+		<splash src="res/screen.png" density="port-hdpi"/>
+		<splash src="res/screen.png" density="port-ldpi"/>
+		<splash src="res/screen.png" density="port-mdpi"/>
+		<splash src="res/screen.png" density="port-xhdpi"/>
+	</platform>
+	<preference name="SplashScreenDelay" value="10000" />
+    <preference name="Orientation" value="portrait" />
+	<icon src="res/icon.png" />
+</widget>

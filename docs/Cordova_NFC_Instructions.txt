@@ -1,0 +1,70 @@
+
+--------------------------------------------------------
+Step to create Cordova project in Windows OS
+--------------------------------------------------------
+
+1. Open Command Prompt (cmd) and change to folder where cordova project is going to be created.
+
+	cordova create nfc_maintenance com.softtek.delta "Delta ID CARD"
+
+	* cordova create = Cordova command to create project
+	* nfc_maintenance = Specifies a directory to be generated for your project (Directory should not already exist). Cordova will create www folder
+			that include application files.
+
+2. Move to new Cordova folder in Command Prompt to add platforms runnign the command below for Android
+
+	cordova platform add android
+
+3. Run the below plug in that applications needs:
+
+	cordova plugin add org.apache.cordova.splashscreen
+	cordova plugin add org.apache.cordova.inappbrowser
+	cordova plugin add org.apache.cordova.dialogs
+	cordova plugin add org.apache.cordova.device
+	cordova plugin add com.chariotsolutions.nfc.plugin
+
+	cordova plugin add org.apache.cordova.globalization
+	cordova plugin add org.apache.cordova.network-information
+
+4. At same level than www folder should be a Resource folder "res". This directory will include resources that applications needs as icon, background etc.
+   Move resource files into this folder
+
+5. Now configure the config.xml accordingly
+
+------------------------------------------
+Folder Structure
+------------------------------------------
+
+nfc_maintenance
+  |
+  |____hooks
+  |
+  |____platforms
+  |
+  |____plugins
+  |
+  |____res
+  |
+  |____www
+
+
+--------------------------------------------------------
+Steps to create APK Android
+--------------------------------------------------------
+
+1. To facilitate the creation in Windows OS we can create batch files to avoid input the command every time.
+
+2. Run build_apk.bat file
+	a) Change to Cordova project to www directory
+	b) Run Cordova release command
+
+3. Sign APK application
+	a) Use jarsigner program in Java folder
+	b) Create a key
+	c) Pointing into platforms folder in Android directory to change unsigned.apk folder
+
+
+
+
+
+

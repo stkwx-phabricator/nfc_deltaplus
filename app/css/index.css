@@ -1,0 +1,363 @@
+﻿@media screen and (max-width: 1280px){ 
+/*    @viewport { 
+        width: 360px; 
+        height: 640px;
+    }
+*/}
+.basic{
+    background: url(../img/background.png) no-repeat top center;
+    background-size:100% 100%;
+    background-color: white;
+}
+div{
+    overflow-x:hidden; 
+    text-decoration: none;
+    text-shadow:none;
+}
+.btn_navigator{
+    margin-top: 1.5em;
+}
+.ui-page { -webkit-backface-visibility: hidden; }
+.form-control{
+    border-width: 0px;
+    background-color: yellow;
+    font-size: 1em;
+    text-decoration: none;
+    text-shadow:none;
+}
+.form-control[disabled]{
+    background-color: gray;
+    border-width: 0px;
+    text-decoration: none;
+    text-shadow:none;
+}
+.form-control[readonly]{
+    background-color: yellow;
+}
+.little[disabled]{
+    background-color: gray;
+    border-width: 0px;
+    text-decoration: none;
+    text-shadow:none;
+    border-radius: 0;
+}
+.little{
+    border-width: 0px;
+    font-size: 1em;
+    background-color: yellow;
+    text-decoration: none;
+    text-shadow:none;
+}
+table thead,table tbody{
+    font-size: 1.5em;
+}
+/*rewirte bootstrap css*/
+.table>thead>tr>th,.table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+    font-size: 1.5em;
+}
+.table>thead>tr>th{
+}
+.form-group{
+    margin-bottom: 0.5em;
+}
+label{
+    color:white;
+    text-align: left;
+}
+.ui-mobile label{
+    font-size: 1.7em;
+}
+.input-sm, .form-horizontal .form-group-sm .form-control{
+    border-radius: 0px;
+    color:black;
+    font-weight: bold;
+    font-size: 1.8em;
+    text-decoration: none;
+    text-shadow:none;
+    line-height: 1em;
+}
+.input-sm:focus, .form-horizontal .form-group-sm .form-control:focus{
+    border-radius: 0px;
+    color:black;
+    font-weight: bold;
+    font-size: 1.8em;
+    text-decoration: none;
+    text-shadow:none;
+}
+/*end*/
+/*rewrite jquery mobile css*/
+.ui-input-text{
+   margin:0px; 
+   border-width: 0px;
+}
+/**/
+.generic_btn{
+    background: url(../img/general_btn.png) no-repeat center center;
+    background-size: contain;
+    line-height: 4em;
+    margin: 1em auto 0em auto;
+    color:white;
+    text-align:center;
+    font-size: 2em;
+    text-decoration: none;
+    text-shadow:none;
+}
+.generic_btn_click{
+    background: url(../img/general_btn_click.png) no-repeat center center;
+    background-size: contain;
+    line-height: 4em;
+    margin: 1em auto 1em auto;
+    color:white;
+    text-align:center;
+    font-size: 2em;
+    text-decoration: none;
+    text-shadow:none;
+}
+.btn_webhome{
+    background: url(../img/logo.png) no-repeat;
+    background-size:contain;
+}
+.btn_back,.btn_home,.btn_set{
+    color:white;
+}
+.btn_home span{
+    padding-right: 1em;
+}
+.footer{
+    position:absolute;bottom:10%;text-align:center;width:100%;
+    font-size: 2em;
+}
+/**
+ * read and write module
+ */
+.generic_btn_scan{
+    background:url(../img/sync_btn_unclick.png) no-repeat center center;
+    background-size: contain;
+    height:25em;
+    width:25em;
+    margin: 0 auto;
+}
+.generic_btn_scan_click{
+    background:url(../img/sync_btn_click.png) no-repeat center center;
+    background-size: contain;
+    height:25em;
+    width:25em;
+    margin: 0 auto;
+}
+.generic_btn_scan span,.scan_step1_3_btn span,.scan_step1_4_btn span,.scan_step1_2 span{
+    position: relative;
+    top: 60%;
+    /*left: 40%;*/
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 2.3em;
+}
+.scan_step1 .scan_step1_1,.scan_step1_2,.scan_step1_3,.scan_step1_4{
+    position:absolute;
+    width:100%;
+    top:28%;
+}
+.scan_step1_1_instruction{
+    width:14em;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 2em;
+}
+.scan_step1_2_btn{
+    background: url(../img/sync_btn_scanning.gif) no-repeat center center;
+    background-size: contain;
+    height:25em;
+    width:25em;
+    margin: 0 auto;
+}
+.scan_step1_2_instruction{
+    background: url(../img/syncro-harnais-gif.gif) no-repeat center center;
+    background-size:contain;
+    width:80%;
+    height:180px;
+    margin:0 auto;
+}
+.scan_step1_3_btn{
+    background: url(../img/sync_btn_unfound.png) no-repeat center center;
+    background-size: contain;
+    height:25em;
+    width:25em;
+    margin: 0 auto;
+}
+.scan_step1_3_btn span{
+    color:red;
+}
+/*nfc id card foud*/
+.scan_step1_4_btn{
+    background: url(../img/sync_btn_found.png) no-repeat center center;
+    background-size: contain;
+    height:25em;
+    width:25em;
+    margin: 0 auto;
+}
+.scan_step1_4_btn span{
+    color:green;
+}
+.scan_step2{
+    background-color:black;
+    width:95%;
+    padding-right: 1%;
+    padding-left: 1%;
+    overflow-y:auto;
+    margin:1% auto;
+    text-align:center;
+}
+.scan_step3_1,.scan_step3_2,.scan_step3_3,.scan_step3_4{
+    position:absolute;
+    width:100%;
+}
+.myproducts_detail_form{
+    background-color:black;
+    width:95%;
+    padding-right: 1%;
+    padding-left: 1%;
+    overflow-y:auto;
+    margin:1% auto;
+    text-align:center;
+}
+.ui-state-disabled{
+    opacity: 1;
+}
+.ui-field-contain div{
+    float: right;
+    width: 65%;
+}
+.loginForm div{
+    float:left;
+    width: auto;
+}
+.loginForm label{
+    width: 6em;
+}
+.subcontain div{
+    margin: 0px;
+    float:right;
+    margin-right: 0.5em;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    black;
+    font-weight: bold;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    black;
+    font-weight: bold;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    black;
+    font-weight: bold;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    black;
+    font-weight: bold;
+}
+/*my product*/
+
+.ui-table-columntoggle-btn {
+    display: none !important;/*remove toggle column*/
+}
+/*table style*/
+.productList{
+   background-color: black; 
+   width: 95%;
+   margin: 0 auto;
+   overflow-y:auto; 
+}
+.productList table{
+    color:white;
+    text-align: center;
+}
+.productList table th{
+    text-align: center;
+}
+.productList table td{
+    text-align: center;
+}
+.productList .productList_bac{
+    background: url(../img/product_view_bac.png) no-repeat;
+    background-size: cover;
+    color:black;
+    font-weight: bold;
+    text-shadow:none;
+    margin: 0 1px;
+}
+.productList_view{
+    color: white;
+    font-size: 1.6em;
+}
+/*product manager*/
+.product_manager_login_form{
+    background-color:black;
+    width:95%;
+    overflow-y:auto;
+    margin:0 auto;
+    text-align:center;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+.product_manager_login_form input{
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+}
+/*end*/
+.user_login_form{
+    background-color: black;
+    padding-left: 1%;
+    padding-right: 1%;
+    width: 95%;
+    margin: 0 auto;
+}
+.user_login_form input{
+    background-color:yellow;
+}
+.control-label1{
+    line-height: 2.5em;
+}
+.control-label2{
+    line-height: 1.5em;
+}
+.generic_small_btn{
+    background: url(../img/smart_btn.png) no-repeat center center;
+    background-size: contain;
+    margin: 1em auto 0em auto;
+    color:white;
+    text-align:center;
+    font-size: 2em;
+    text-decoration: none;
+    text-shadow:none;
+    height: 4em;
+}
+
+#scan_read label{
+    margin-bottom: 0em;
+}
+#scan_read input{
+    line-height: 1em;
+}
+#scan_read .little{
+    line-height: 1em;
+}
+.form-control-feedback{
+    top:0px;
+    line-height: 0px;
+
+}
+/**
+*date picker
+*/
+select[name='month_tobe_selected']{
+    background-color: black;
+}
+select[name='year_tobe_selected']{
+    background-color: black;
+}

@@ -1,0 +1,897 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=2, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <title>Delta ID Card</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css">    
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.13.2.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div data-role="page" id="home" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home" style="color:yellow;"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="position: absolute;width: 100%;top:40%;">
+        <div class="row generic_btn menu_scan i_scan_id_card">Scan ID CARD</div>
+        <div class="row generic_btn menu_view i_view_my_products">View my Products</div>
+        <div class="row generic_btn menu_product i_products_manager">My PPE Manager</div>
+    </div>
+    <div class="row footer">
+        <span class="website">WWW.DELTAPLUS.EU</span>
+    </div>
+</div>
+<div data-role="page" id="scan" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="scan_step1" style="">
+            <div class="scan_step1_1" style="">
+                <div class="generic_btn_scan scan_step1_1_btn">
+                    <span class="i_scan_id_card_press">Push</span>
+                </div>
+                <div class="scan_step1_1_instruction" style="margin-top: 2em;">
+                    <div style="margin: 0 0 1em 0;">1. <span class="i_launch_scan">Press to Start</span></div>
+                    <div style="margin: 0 0 1em 0;">2. <span class="i_appro_to_card">Approach to ID CARD</span></div>
+                    <div style="margin: 0 0 1em 0;">3. <span class="i_wait_for_syn">Wait for Synchronization</span></div>
+                </div>
+            </div>
+            <div class="scan_step1_2" style="display:none;">
+                <div class="scan_step1_2_btn">
+                    <span class="i_scanning" style="color: #ffffff;">Scanning</span>
+                </div>
+                <div class="scan_step1_2_instruction">
+                </div>
+            </div>
+            <div class="scan_step1_3" style="display:none;">
+                <div class="scan_step1_3_btn">
+                    <span class="i_idCardNotFound">ID NFC CARD<br/>Not found</span>
+                </div>
+                <div class="generic_btn scan_step1_3_instruction">
+                  <span class="i_scanAgain">Try scanning again</span>
+                </div>
+            </div>
+            <div class="scan_step1_4" style="display:none;">
+                <div class="scan_step1_4_btn">
+                    <span class="i_idCardFound">ID CARD<br/>Found</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="scan_read" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div style="position:absolute;width:100%;top:20%;">
+            <div class="scan_step2" style="border:2px solid yellow">
+                <form class="form-horizontal" role="form" style="margin:1em 0em 0em 2em;">
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-3 i_product">Product:</label>
+
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" disabled name="product">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:1.4em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-3 i_serial">ID:</label>
+
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" disabled name="serial">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:2.8em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-3 i_user">User:</label>
+
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" disabled name="user">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:4.2em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_prod" style="text-align: right;">Production:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled readonly name="prod" onchange="if(this.value!=''){$(this).parent().parent().find('span').fadeIn();}">
+                        </div>
+                            <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:5.8em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_start" style="text-align: right;">First Use:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled readonly name="start"/>
+                        </div>
+                            <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:7.2em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav1" style="text-align: right;">Maintenance 1:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled readonly name="sav1">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:8.7em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav2" style="text-align: right;">Maintenance 2:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled readonly name="sav2">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:10.2em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav3" style="text-align: right;">Maintenance 3:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled readonly name="sav3">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:11.7em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav4" style="text-align: right;">Maintenance 4:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled readonly name="sav4">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:13.2em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav5" style="text-align: right;">Maintenance 5:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled readonly name="sav5">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="font-size:2.5em; color:#ffffff; top:14.7em; padding-right:2.0em; display:none"></span>
+                    </div>
+                    <div data-role="popup" id="date_picker" data-overlay-theme="b" data-theme="b" data-dismissible="false"
+                         style="min-width:20em;max-width:400px;">
+                        <div role="main" class="ui-content">
+                                <div class="row" style="height: 10em;">
+                                    <div class="col-xs-5">
+                                        <select name="month_tobe_selected">                                            
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <select name="year_tobe_selected">
+                                        </select>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b i_return btn_confirmSelectDate" style="width: 100%">Confirm</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="javascript:;" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b i_cancle" data-rel="back" data-transition="flow" style="width: 100%">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="generic_btn scan_step2_btn i_saveData" style="display:none;">Save data in ID CARD</div>
+            <div class="row scan_read_btn" style="text-align: center">
+               <div class="col-xs-5 generic_small_btn scan_add_to_myproduct" style="margin-left: 2em;">
+                   <div style="line-height: 1em;margin-top: 1.5em;" class="i_addIdTo">
+                       Add Product
+                   </div>                   
+               </div>
+                <div class="col-xs-5 generic_small_btn scan_step2_btn2">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_editProduct">
+                        Edit Product
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="scan_sync" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="scan_step3_1" style="">
+            <div class="generic_btn_scan scan_step3_1_btn">
+                <span class="i_sycnIdCard">Sync.<br/>ID CARD</span>
+            </div>
+            <div class="scan_step3_1_instruction" style="text-align:center;font-weight:bold;font-size:2.5em;">
+                <span class="i_syn_infor">
+                <div>To save the data, information</div>
+                <div>must be synchronized</div>
+                <div>with product ID CARD</div>
+                </span>
+            </div>
+        </div>
+        <div class="scan_step1_2 scan_step3_2" style="display:none">
+            <div class="scan_step1_2_btn">
+                <span class="i_scanning" style="color: #ffffff;">Scanning</span>
+            </div>
+            <div class="scan_step1_2_instruction">
+            </div>
+        </div>
+        <div class="scan_step3_3" style="display:none;">
+            <div class="scan_step1_3_btn">
+                <span class="i_idCardNotFound">ID CARD<br/>Not Found</span>
+            </div>
+            <div class="generic_btn scan_step3_3_instruction i_scanAgain">
+                Sync. again
+            </div>
+        </div>
+        <div class="scan_step3_4" style="display:none">
+            <div class="scan_step1_4_btn">
+                <span class="i_idCardFound">ID CARD<br/>Found</span>
+            </div>
+            <div style="text-align:center;font-weight:bold;font-size:2em;">
+                <div class="i_inforSycn">Information synchronized</div>
+                <div class="i_databaseUpdate">Product updated in DB</div>
+            </div>
+            <div class="generic_btn scan_step3_4_instruction i_view_my_products">
+                View my Products
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="myproducts" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="position: absolute; width: 100%; top:20%;">
+        <table class="table table-condensed" style="margin-bottom: 0em; background-color: black; width: 95%; margin: 0 auto; color:white; border:2px solid yellow">
+            <thead style="">
+            <tr>
+                <th width="10%"></th>
+                <th width="40%" style="text-align: center;" class="i_product">Product</th>
+                <th width="40%" style="text-align: center;">ID</th>
+                <th width="10%"></th>
+            </tr>
+            </thead>
+        </table>
+        <div class="productList" style="border-left:2px solid yellow; border-right:2px solid yellow; border-bottom: 2px solid yellow">
+            <table class="table table-condensed">
+                <tbody>
+                <tr>
+                    <th width="10%">1.</th>
+                    <td width="37%" class="productList_bac">1941</td>
+                    <td width="37%" class="productList_bac">100%</td>
+                    <td width="15%" class="productList_view">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" style="position: absolute;width: 100%;top:80%;">
+        <div class="generic_btn product_manager i_product_manager">My PPE Manager</div>
+    </div>
+</div>
+<div data-role="page" id="myproducts_detail" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="position: absolute;width: 100%;top:20%;">
+        <div class="myproducts_detail_form" style="border:2px solid yellow">
+                <form class="form-horizontal" role="form" style="margin:1em 0em 0em 2em;">
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-3 i_product">Product:</label>
+
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" disabled name="product">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; top: 0; padding-top: 0.4em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-3 i_serial">ID:</label>
+
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" disabled name="serial">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; padding-top: 2.2em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm" style="margin-bottom: 1em;">
+                        <label class="col-xs-3 i_user">User:</label>
+
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control input-sm" disabled name="user">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; padding-top: 0.8em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_prod" style="text-align: right;">Production:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled
+                                   name="prod"
+                                   onchange="if(this.value!=''){$(this).parent().parent().find('span').fadeIn();}">
+                        </div>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  style="font-size: 2.5em; color: #ffffff; padding-top: 3.8em; right: 0; padding-right: 2.0em;display:none;"
+                                  ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_start" style="text-align: right;">First Use:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled
+                                   name="start"
+                                   onchange="if(this.value!=''){$(this).parent().parent().find('span').show();}"/>
+                        </div>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  style="font-size: 2.5em; color: #ffffff; padding-top: 5.4em; right: 0; padding-right: 2.0em;display:none;"
+                                  ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav1" style="text-align: right;">Maintenance 1:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled
+                                   name="sav1">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; padding-top: 6.8em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav2" style="text-align: right;">Maintenance 2:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled
+                                   name="sav2">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; padding-top: 8.3em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav3" style="text-align: right;">Maintenance 3:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled
+                                   name="sav3">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; padding-top: 9.7em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav4" style="text-align: right;">Maintenance 4:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled
+                                   name="sav4">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; padding-top: 11.1em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-7 i_sav5" style="text-align: right;">Maintenance 5:</label>
+
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control input-sm little dateInput" disabled
+                                   name="sav5">
+                        </div>
+                        <span class="glyphicon glyphicon-remove form-control-feedback"
+                              style="font-size: 2.5em; color: #ffffff; padding-top: 12.6em; right: 0; padding-right: 2.0em;display:none;"
+                              ontouchend="clearReadInput(this)"></span>
+                    </div>
+                </form>
+        </div>
+        <div class="generic_btn backToViewMyProducts i_delete">Delete</div>
+    </div>
+</div>
+<div data-role="page" id="setting" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog" style="color:yellow;"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="position:absolute;width:100%;top:30%;">
+        <div class="row generic_btn menu_language">
+            <span class="i_language">Language</span>
+            <div data-role="popup" id="language_setting" data-overlay-theme="b" data-theme="b" data-dismissible="false"
+                 style="min-width:20em;max-width:400px;">
+                <div role="main" class="ui-content">
+                    <form>
+                        <fieldset data-role="controlgroup">
+                            <input type="radio" name="changeLang" id="changeLang_en" value="on"
+                                   checked="checked">
+                            <label for="changeLang_en">English</label>
+                            <input type="radio" name="changeLang" id="changeLang_zh" value="on">
+                            <label for="changeLang_zh">中文</label>
+                            <input type="radio" name="changeLang" id="changeLang_fr" value="on">
+                            <label for="changeLang_fr">François</label>
+                            <input type="radio" name="changeLang" id="changeLang_sp" value="on">
+                            <label for="changeLang_sp">Espanol</label>
+                        </fieldset>
+                    </form>
+                  <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b i_return" data-rel="back" data-transition="flow" style="width: 100%">Confirm</a>
+                </div>
+            </div>
+        </div>
+        <div class="row generic_btn menu_use i_use_instruction">Use Operations</div>
+        <div class="row generic_btn menu_update i_update_backup">Update</div>
+        <div class="row generic_btn menu_about i_about">About</div>
+    </div>
+</div>
+    <div data-role="page" id="product_manager" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="position:absolute;width:100%;top:35%;">
+        <div class="user_login_form">
+            <form class="form-horizontal" role="form" style="margin-top: 1em;">
+                <div class="form-group form-group-sm">
+                    <label class="col-xs-8 i_signin" style="font-size:3em;color:yellow;">
+                        S<small>ign in:</small>
+                    </label>
+
+                    <div class="col-xs-4"></div>
+                </div>
+                <div class="form-group form-group-sm ">
+                    <label class="col-xs-3 i_login">Username (email):</label>
+
+                    <div class="col-xs-9">
+                        <input type="text" name="login" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-xs-3 i_password">Password:</label>
+
+                    <div class="col-xs-9">
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="generic_btn validate_login i_validate">Login</div>
+        <div style="text-align:center;font-size:2.5em;font-weight:bold;margin-top:2em;">
+            <div style="margin:0.5em 0 0.5em 0" class="nav_lost_password i_lost_password">Remember Password              
+            </div>
+            <div style="margin:0.5em 0 0.5em 0"
+                 class="nav_new_user_registration i_new_user_registration">Register an account
+            </div>
+            <div ontouchend="alert('not finished yet')" style="margin:0.5em 0 0.5em 0" class="i_about_product_manager">
+                About ID CARD Manager
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="user_registion" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div style="position:absolute;width:100%;top:32%;">
+            <div class="product_manager_login_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-8 i_contactInfor" style="font-size:3em;color:yellow;">
+                            C<small>ontact Information:</small>
+                        </label>
+
+                        <div class="col-xs-4"></div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-5 control-label2"><span class="i_first_name">First Name</span>:</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-5 control-label2"><span class="i_last_name">Last Name</span>:</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-5 control-label2"><span
+                                class="i_company">Company</span>:</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" id="company">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-5 control-label2"><span class="i_phone">Phone</span>:</label>
+
+                        <div class="col-xs-7">
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-8 i_loginInfor" style="font-size:3em;color:yellow;">
+                            L<small>ogin information:</small>
+                        </label>
+
+                        <div class="col-xs-4"></div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-5 control-label2"><span class="i_email">email</span>:</label>
+
+                        <div class="col-xs-7">
+                            <input type="email" class="form-control" id="email" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-5 control-label2"><span class="i_password">Password</span>:</label>
+
+                        <div class="col-xs-7">
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-xs-5 control-label2"><span class="i_confirmPassword">Confirm Password</span>:</label>
+
+                        <div class="col-xs-7">
+                            <input type="password" class="form-control" id="passwordConfirm">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="generic_btn validate_registion i_register">Register</div>
+        </div>
+    </div>
+</div>
+
+    <div data-role="page" id="remember_password" class="basic container">
+        <div class="row" style="">
+            <div class="col-xs-2 btn_webhome"></div>
+            <div class="col-xs-8 pull-right btn_navigator">
+                <div class="col-xs-4 btn_back">
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                </div>
+                <div class="col-xs-4 btn_home">
+                    <span class="glyphicon glyphicon-home"></span>
+                </div>
+                <div class="col-xs-4 btn_set">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="remember_password_step1" style="position:absolute;width:100%;top:32%; ">
+                <div class="product_manager_login_form">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label class="col-xs-12 i_rp_step1_title" style="font-size:3em;color:yellow;margin-bottom:1em;">
+                                Step 1: Fill A<small>ccount</small>
+                            </label>
+                        </div><br />
+                        <div class="form-group form-group-sm" style="margin-top:1em;margin-bottom:1em;">
+                            <label class="col-xs-3 control-label2"><span class="i_email">email</span>:</label>
+
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" id="rp_step1_login" maxlength="100">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-2"></div>
+                <div class=" col-xs-4 generic_small_btn remember_password_step1_nextstep">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_rp_step_next">
+                        Next Step
+                    </div>
+                </div>
+                <div class="col-xs-4 generic_small_btn remember_password_cancel">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_rp_step_cancel">
+                        Cancel
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+
+            </div>
+            <div class="remember_password_step2" style="position:absolute;width:100%;top:32%;display:none">
+                <div class="product_manager_login_form">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label class="col-xs-12 i_rp_step2_title" style="font-size:3em;color:yellow;">
+                                Step 2: Validate Code
+                            </label>
+                        </div>                        
+                        <div class="form-group form-group-sm">
+                            <label class="col-xs-3 control-label2"><span class="i_email">Email</span>:</label>
+
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" id="rp_step2_email" value="" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm" style="">
+                            <label class="col-xs-3 control-label2"><span class="i_secCode">Code:</span>:</label>
+
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control" id="rp_step2_secCode">
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm" style="margin-bottom:1em;">
+                            <label class="col-xs-12 control-label2">
+                                <span class="i_rp_step2_note">
+                                    <strong>Note:</strong> Please validate your account and email address and click send code.
+                                </span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-4 generic_small_btn remember_password_step2_sendcode ">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_rp_step2_sendcode">
+                        Send Code
+                    </div>
+                </div>
+                <div class="col-xs-4 generic_small_btn remember_password_step2_nextstep ">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_rp_step_next">
+                        Next Step
+                    </div>
+                </div>
+                <div class="col-xs-4 generic_small_btn remember_password_cancel ">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_rp_step_cancel">
+                        Cancel
+                    </div>
+                </div>
+
+            </div>
+            <div class="remember_password_step3" style="position:absolute;width:100%;top:32%;display:none">
+                <div class="product_manager_login_form">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label class="col-xs-12 i_rp_step3_title" style="font-size:3em;color:yellow;">
+                                Step 3: Reset Password
+                            </label>
+                        </div>
+                        <div class="form-group form-group-sm" style="margin-top:1em; margin-bottom:1em">
+                            <label class="col-xs-5 control-label2"><span class="i_password">Password</span>:</label>
+                            <div class="col-xs-7">
+                                <input type="password" class="form-control" id="rp_step3_password1" value="" maxlength="16">
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm" style="margin-top:1em; margin-bottom:1em">
+                            <label class="col-xs-5 control-label2"><span class="i_confirmPassword">Confirm Password</span>:</label>
+
+                            <div class="col-xs-7">
+                                <input type="password" class="form-control" id="rp_step3_password2" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-2"></div>
+                <div class="col-xs-4 generic_small_btn remember_password_step3_save ">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_rp_step_next">
+                        Next Step
+                    </div>
+                </div>
+                <div class="col-xs-4 generic_small_btn remember_password_cancel ">
+                    <div style="line-height: 1em;margin-top: 1.5em;" class="i_rp_step_cancel">
+                        Cancel
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+            </div>
+        </div>
+    </div>
+
+
+<div data-role="page" id="product_manager_center" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="position:absolute;top:30%;width:100%;">
+        <div class="row generic_btn access_my i_myPPEManager">My PPE Manager</div>
+        <div class="row generic_btn upload_my i_uploadMyProductList">Upload My Product List</div>
+        <div class="row generic_btn backup_my i_importMyProductList">Import My Product List</div>
+        <div class="row generic_btn status_my i_myPPEStatus">My PPE status</div>
+    </div>
+</div>
+<div data-role="page" id="ppe_status" class="basic container">
+    <div class="row" style="">
+        <div class="col-xs-2 btn_webhome"></div>
+        <div class="col-xs-8 pull-right btn_navigator">
+            <div class="col-xs-4 btn_back">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </div>
+            <div class="col-xs-4 btn_home">
+                <span class="glyphicon glyphicon-home"></span>
+            </div>
+            <div class="col-xs-4 btn_set">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div style="position:absolute;width:100%;top:32%;">
+            <div class="product_manager_login_form">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group form-group-sm" style="margin-top:1em;margin-bottom:1em;">
+                        <label class="col-xs-8 i_productsRegistered" style="font-size:2em;color:yellow;">Products Registered:
+                        </label>
+
+                        <div class="col-xs-4"></div>
+                    </div>
+                    <div class="form-group form-group-sm" style="margin-top:1em;margin-bottom:1em;">
+                        <label class="col-xs-8 control-label2 i_inUse" style="text-align:right;"><span class="">In Use</span>:</label>
+
+                        <div class="col-xs-3">
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm" style="margin-top:1em;margin-bottom:1em;">
+                        <label class="col-xs-8 i_maintain" style="font-size:2em;color:yellow;">To be maintained:
+                        </label>
+
+                        <div class="col-xs-4"></div>
+                    </div>
+                    <div class="form-group form-group-sm" style="margin-top:1em;margin-bottom:1em;">
+                        <label class="col-xs-8 control-label2 i_now" style="text-align:right;"><span class="">Now</span>:</label>
+
+                        <div class="col-xs-3">
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm" style="margin-top:1em;margin-bottom:1em;">
+                        <label class="col-xs-8 control-label2 i_lessMonth" style="text-align:right;"><span class="">In less than 1 month</span>:</label>
+
+                        <div class="col-xs-3">
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm" style="margin-top:1em;margin-bottom:1em;">
+                        <label class="col-xs-8 control-label2 i_lessThreeMonth" style="text-align:right;"><span class="">In less than 3 months</span>:</label>
+
+                        <div class="col-xs-3">
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row generic_btn access_my i_products_manager">My PPE Manager</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/i18n.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/mobiscroll.custom-2.13.2.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</body>
+</html>
